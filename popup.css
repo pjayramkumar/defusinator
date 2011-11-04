@@ -1,0 +1,85 @@
+/*************************************************************
+* deFusinator - JavaScript de-obfuscator plugin for Chrome
+* by Tamas Rudnai, all rights reserved
+*************************************************************/
+
+body {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  background: #FFFFCC;
+}
+
+div:first-child {
+  margin-top: 0px;
+}
+
+div {
+  cursor: pointer;
+  text-align: center;
+  padding: 1px 3px;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  width: 150px;
+  margin-top: 1px;
+  background: #ccccff;
+}
+div:hover {
+  color: yellow;
+  background: #4450ff;
+}
+#log-window {
+  color: black;
+  cursor: pointer;
+  text-align: left;
+  padding: 0px 0px;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  width: 1024;
+  min-height: 768;
+  max-height: 768;
+  margin: 0px 0px;
+  background: #FFFFCC
+}
+#log-window:hover {
+  color: red;
+}
+#log-area {
+  color: black;
+  cursor: pointer;
+  text-align: left;
+  padding: 0px 12px;
+  // padding-right: 14px;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  width: 76%;
+  height: 100%;
+  margin: 0px 0px;
+  overflow: auto;
+  word-wrap: break-word;
+  background: #FFFFCC
+}
+
+#ctx
+{
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  border:solid 1px black;
+  padding:8px;
+  font-size: 1.2em;
+  text-align: left;
+  color: black;
+  background-color:white;
+}
+
+li {
+  color: black;
+  background: #FFFFCC
+}
+li:hover {
+  color: black;
+  background: #FF8800
+}
+

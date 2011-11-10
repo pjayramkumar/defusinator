@@ -26,6 +26,8 @@ function ctx(request, x, y){
         ||  ( 'src'    == request.id )
         ) {
             var url = request.innerHTML.replace(/^src=/, ''); // remove 'src='
+            url = url.replace(/<b>/g, ''); // remove '<b>'
+            url = url.replace(/<\/b>/, ''); // remove '</b>'
             var site = url.replace(/^[a-zA-Z]+:\/\//, ''); // remove protocol
             site = site.replace(/\/.*$/, ''); // remove path and parameters
             site = site.replace(/\?.*$/, ''); // remove parameters

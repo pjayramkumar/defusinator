@@ -1,6 +1,6 @@
 {
   "name": "deFusinator",
-  "version": "0.8",
+  "version": "0.9",
   "description": "JavaScript de-Obfuscator",
   "browser_action": {
     "default_icon": "deFusinator-yellow.png",

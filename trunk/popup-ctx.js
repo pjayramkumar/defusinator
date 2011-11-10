@@ -14,7 +14,10 @@ function check(e){
     } 
 } 
 
+var ctxRequest;
+
 function ctx(request, x, y){ 
+    ctxRequest = request;
     popUpNew = 1; // mark that we were clicking once
     var obj = document.getElementById('ctx'); 
     if( obj ){
@@ -29,10 +32,26 @@ function ctx(request, x, y){
             var domain = site.replace(/^www./, ''); // need to find a better way for this!!!
 
             obj.innerHTML =
-                '<a target="_blank" href="http://aceinsight.websense.com/Results.aspx?url='+url+'">AceInsight</a><br>'+
-                '<a target="_blank" href="http://www.mywot.com/en/scorecard/'+site+'">myWOT</a><br>'+
-                '<a target="_blank" href="http://www.robtex.com/dns/'+site+'.html#result">robtex</a><br>'+
-                '<a target="_blank" href="http://www.robtex.com/dns/'+domain+'.html#whois">whois</a><br>'+
+                '<div><a target="_blank" href="http://aceinsight.websense.com/Results.aspx?url='+url+'">AceInsight</a></div>'+
+                '<div><a target="_blank" href="http://www.mywot.com/en/scorecard/'+site+'">myWOT</a></div>'+
+                '<div><a target="_blank" href="http://www.robtex.com/dns/'+site+'.html#result">robtex</a></div>'+
+                '<div><a target="_blank" href="http://www.robtex.com/dns/'+domain+'.html#whois">whois</a></div>'+
+            '';
+
+            obj.style.display='block';
+            obj.style.top=y;
+            obj.style.left=x;
+        }
+        else if ( 'script' == request.id ) {
+            var url = request.innerHTML.replace(/^src=/, ''); // remove 'src='
+            var site = url.replace(/^[a-zA-Z]+:\/\//, ''); // remove protocol
+            site = site.replace(/\/.*$/, ''); // remove path and parameters
+            site = site.replace(/\?.*$/, ''); // remove parameters
+            var domain = site.replace(/^www./, ''); // need to find a better way for this!!!
+
+            obj.innerHTML =
+                '<div onclick="click(this)" id="decode">Decode</div>'+
+                '<div onclick="click(this)" id="ltrace-this">Behaviour Analysis</div>'+
             '';
 
             obj.style.display='block';

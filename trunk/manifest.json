@@ -25,6 +25,7 @@
           "script.js",
           "redir.js",
           "ltrace.js",
+          "decode.js",
           "deFusinator.js"
       ]
     }

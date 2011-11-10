@@ -3,53 +3,41 @@
 * by Tamas Rudnai, all rights reserved
 *************************************************************/
 
+var sendResp;
 
 // Listener -- events coming from the popup.html
 chrome.extension.onRequest.addListener (
   function( request, sender, sendResponse ) {
+    sendResp = sendResponse;
     ctx = 'log'; // reset context
-//console.log('request: ' + request.analyse );
-    if ( request.analyse == 'about' ) {
-      // ABOUT
-      res = deFusLogHead('About');
-      deFusLogState = -1;
-      res += deFusLog( 
-          'This plugin was written for helping researchers, security experts and'+
-          'site administrators to analyse web pages for injected malicious code.'+
-          'With this tool one can see all iFrames, redirections and scripts on the page'+
-          'and can analyze what are those elements doing. Ideally it helps to determine the'+
-          'malicious activity on the page and reveals the injected code itself.'
-      );
-      sendResponse( { log: res } );
-    }
-
+alert('request: ' + request.analyse );
 
     /////////////// IFRAME REPORT //////////////
-    if ( request.analyse == 'iframe-all' ) {
+    if ( 'iframe-all' == request.analyse ) {
         iframeAll();
         // console.log('sendResponse(' + res + ')\n');
         sendResponse( { iframes: res } );
     }
 
-    /////////////// BEHAVIOUR ANALYSIS OF A PARTICULAR SCRIPT //////////////
-    else if ( request.analyse == 'script' ) {
-        ltraceScript( request.text );
+    /////////////// DECODING A PARTICULAR SCRIPT //////////////
+    else if ( 'decode' == request.analyse ) {
+        decode( request.text );
 
-        // console.log('sendResponse(' + res + ')\n');
-        sendResponse( { ltrace: res } );
+        console.log('sendResponse( decoded: ' + res + ')\n');
+        sendResponse( { decoded: res } );
     }
 
     /////////////// SCRTIPT REPORTS /////////////////
-    else if ( request.analyse.substr(0,6) == 'script' ) {
+    else if ( 'script' == request.analyse.substr(0,6) ) {
         res = deFusLogHead("Script Report");
         scriptReport( request.analyse, document.head.getElementsByTagName('script') );
         scriptReport( request.analyse, document.body.getElementsByTagName('script') );
-        // console.log('sendResponse(' + res + ')\n');
+        console.log('sendResponse( scripts: ' + res + ')\n');
         sendResponse( { scripts: res } );
     }
 
     /////////////// REDIRECTION REPORTS /////////////////
-    else if ( request.analyse == 'meta-http-equiv' ) {
+    else if ( 'meta-http-equiv' == request.analyse ) {
 console.log('meta-http-equiv');
         res = deFusLogHead("Redirection Report");
         ctx = 'redir';
@@ -58,8 +46,17 @@ console.log('meta-http-equiv');
         sendResponse( { redirs: res } );
     }
 
+    /////////////// BEHAVIOUR ANALYSIS OF A PARTICULAR SCRIPT //////////////
+    else if ( 'ltrace-this' == request.analyse ) {
+        ltraceScript( request.text );
+
+        // console.log('sendResponse(' + res + ')\n');
+        //var t = setTimeout_orig.call( window, "sendResp( { ltrace: res } );", 10000 );
+        sendResponse( { ltrace: res } );
+    }
+
     /////////////// BEHAVIOUR ANALYSIS //////////////////
-    else if ( request.analyse == 'ltrace' ) {
+    else if ( 'ltrace' == request.analyse ) {
         // console.log('ltrace');
         // DEBUG
         res = deFusLogHead("Script Activity");

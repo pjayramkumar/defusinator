@@ -34,7 +34,7 @@ function ctx(request, x, y){
             var domain = site.replace(/^www./, ''); // need to find a better way for this!!!
 
             obj.innerHTML =
-                '<div><a target="_blank" href="http://aceinsight.websense.com/Results.aspx?url='+url+'">AceInsight</a></div>'+
+                '<div><a target="_blank" href="http://aceinsight.websense.com/Results.aspx?url='+url+'">ACE Insight</a></div>'+
                 '<div><a target="_blank" href="http://www.mywot.com/en/scorecard/'+site+'">myWOT</a></div>'+
                 '<div><a target="_blank" href="http://www.robtex.com/dns/'+site+'.html#result">robtex</a></div>'+
                 '<div><a target="_blank" href="http://www.robtex.com/dns/'+domain+'.html#whois">whois</a></div>'+

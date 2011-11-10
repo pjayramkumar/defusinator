@@ -6,7 +6,7 @@
 var deFusLogState = 0;
 
 deFusLogHead = function(s) {
-    return ( '<H2>deFusinator v0.8 by Tamas Rudnai - ' + s + '</H2><OL>' );
+    return ( '<H2>deFusinator v0.9 by Tamas Rudnai - ' + s + '</H2><OL>' );
 }
 
 deFusLog = function(s) {

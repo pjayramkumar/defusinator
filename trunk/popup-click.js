@@ -43,13 +43,13 @@ function click(request) {
         showCtxMenu(request, e.pageX, e.pageY);
     }
     else if ( 'about' == request.id ) {
-        document.body.innerHTML = '<iframe src="about.html"></iframe>';
+        document.body.innerHTML = '<iframe width="640" height="400" src="about.html"></iframe>';
     }
     else if ( 'faq' == request.id ) {
-        document.body.innerHTML = '<iframe src="faq.html"></iframe>';
+        document.body.innerHTML = '<iframe width="640" height="400" src="faq.html"></iframe>';
     }
     else if ( 'help' == request.id ) {
-        document.body.innerHTML = '<iframe src="help.html"></iframe>';
+        document.body.innerHTML = '<iframe width="640" height="400" src="help.html"></iframe>';
     }
     else if ( ( 'decode' == request.id )
            || ( 'ltrace-this' == request.id )

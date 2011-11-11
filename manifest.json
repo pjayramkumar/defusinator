@@ -12,7 +12,6 @@
       "https://*/*",
       "file://*/*"
   ],
-  "background_page": "background.html",
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*", "file://*/*"],

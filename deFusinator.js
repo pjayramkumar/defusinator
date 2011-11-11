@@ -5,12 +5,28 @@
 
 var sendResp;
 
+function stripString(str) {
+    // removing text formattings to get a clear text of the script
+    str = str.replace(/<b>/g, '');
+    str = str.replace(/<\/b>/g, '');
+    str = str.replace(/<li>/g, '');
+    str = str.replace(/<\/li>/g, '\n');
+    str = str.replace(/<br>/g, '\n');
+    str = str.replace(/&lt;/g, '<');
+    str = str.replace(/&gt;/g, '>');
+    str = str.replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g, '\t');
+    str = str.replace(/&nbsp;/g, ' ');
+    str = str.replace(/&amp;/g, '&');
+
+    return str;
+}
+
 // Listener -- events coming from the popup.html
 chrome.extension.onRequest.addListener (
   function( request, sender, sendResponse ) {
     sendResp = sendResponse;
     ctx = 'log'; // reset context
-alert('request: ' + request.analyse );
+//alert('request: ' + request.analyse );
 
     /////////////// IFRAME REPORT //////////////
     if ( 'iframe-all' == request.analyse ) {
@@ -23,7 +39,7 @@ alert('request: ' + request.analyse );
     else if ( 'decode' == request.analyse ) {
         decode( request.text );
 
-        console.log('sendResponse( decoded: ' + res + ')\n');
+        // console.log('sendResponse( decoded: ' + res + ')\n');
         sendResponse( { decoded: res } );
     }
 
@@ -32,13 +48,12 @@ alert('request: ' + request.analyse );
         res = deFusLogHead("Script Report");
         scriptReport( request.analyse, document.head.getElementsByTagName('script') );
         scriptReport( request.analyse, document.body.getElementsByTagName('script') );
-        console.log('sendResponse( scripts: ' + res + ')\n');
+        // console.log('sendResponse( scripts: ' + res + ')\n');
         sendResponse( { scripts: res } );
     }
 
     /////////////// REDIRECTION REPORTS /////////////////
     else if ( 'meta-http-equiv' == request.analyse ) {
-console.log('meta-http-equiv');
         res = deFusLogHead("Redirection Report");
         ctx = 'redir';
         redirReport( request.analyse, document.getElementsByTagName('meta') );
@@ -51,7 +66,6 @@ console.log('meta-http-equiv');
         ltraceScript( request.text );
 
         // console.log('sendResponse(' + res + ')\n');
-        //var t = setTimeout_orig.call( window, "sendResp( { ltrace: res } );", 10000 );
         sendResponse( { ltrace: res } );
     }
 

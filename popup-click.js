@@ -40,7 +40,7 @@ function click(request) {
     ||  ( 'src'    == request.id )
     ) {
         var e = window.event;
-        ctx(request, e.pageX, e.pageY);
+        showCtxMenu(request, e.pageX, e.pageY);
     }
     else if ( 'about' == request.id ) {
         document.body.innerHTML = '<iframe src="about.html"></iframe>';

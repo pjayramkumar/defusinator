@@ -1,0 +1,36 @@
+<HTML>
+<!-- --------------------------------------------------------
+- deFusinator - JavaScript de-obfuscator plugin for Chrome
+- by Tamas Rudnai, all rights reserved
+------------------------------------------------------------ -->
+
+<HEAD>
+
+<link rel="stylesheet" type="text/css" href="popup.css" />
+
+<script type="text/javascript" src="popup-ctx.js"></script>
+<script type="text/javascript" src="popup-log.js"></script>
+<script type="text/javascript" src="popup-click.js"></script>
+
+</HEAD>
+
+<BODY>
+
+<!-- deFusniator Menu -->
+<div class="menu" onclick="click(this)" id="about">About</div>
+<div class="menu" onclick="click(this)" id="faq">FAQ</div>
+<div class="menu" onclick="click(this)" id="help">Help</div>
+<div class="menu" id="separator"><hr></div> 
+<div class="menu" onclick="click(this)" id="iframe-all">iFrame</div>
+<div class="menu" onclick="click(this)" id="meta-http-equiv">meta-http-equiv</div>
+<div class="menu" id="separator"><hr></div> 
+<div class="menu" onclick="click(this)" id="script-all">script (ALL)</div>
+<div class="menu" onclick="click(this)" id="script-src">script (src=)</div>
+<div class="menu" onclick="click(this)" id="script-inlined">script (inlined)</div>
+<div class="menu" onclick="click(this)" id="script-events">script (event handlers)</div>
+<div class="menu" onclick="click(this)" id="ltrace">Behaviour Analysis</div>
+
+</BODY>
+
+</HTML>
+

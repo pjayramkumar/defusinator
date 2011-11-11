@@ -1,0 +1,34 @@
+{
+  "name": "deFusinator",
+  "version": "0.9",
+  "description": "JavaScript de-Obfuscator",
+  "browser_action": {
+    "default_icon": "deFusinator-yellow.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+      "tabs",
+      "http://*/*",
+      "https://*/*",
+      "file://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "run_at": "document_end",
+      "js": [
+          "global.js",
+          "logger.js",
+          "hook.js",
+          "iframe.js",
+          "script.js",
+          "redir.js",
+          "ltrace.js",
+          "decode.js",
+          "deFusinator.js"
+      ]
+    }
+  ]
+}
+
+

@@ -9,9 +9,10 @@ function logPrint(s) {
     // Simulate the original document.write
     text = document.createElement();
 
-    s += '<div id="ctx"></div>';
+    // creating an empty context menu window
+    s += '<div class="contextMenu" id="ctxMenu"></div>';
 
-    text.innerHTML = '<div id="log-window"><div id="log-area">' + s + '</div></div>';
+    text.innerHTML = '<div class="logWindow"><div class="logArea">' + s + '</div></div>';
     document.body.innerHTML = '';
     document.body.appendChild(text);
     // document.body.style.backgroundColor='yellow';

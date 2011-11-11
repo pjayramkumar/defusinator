@@ -7,19 +7,10 @@
 var ltraceScript = function(script) {
     ctx = 'script';
 
-    // removing text formattings to get a clear text of the script
-    script = script.replace(/<b>/g, '');
-    script = script.replace(/<\/b>/g, '');
-    script = script.replace(/&lt;/g, '<');
-    script = script.replace(/&gt;/g, '>');
-    script = script.replace(/<br>/g, '\n');
-    script = script.replace(/&nbsp;&nbsp;&nbsp;&nbsp;/g, '\t');
-    script = script.replace(/&nbsp;/g, ' ');
-    script = script.replace(/&amp;/g, '&');
-
     res = deFusLogHead("Script Activity");
 
     // execute the script
+    script = stripString(script);
     try {
         eval_orig(script);
     }

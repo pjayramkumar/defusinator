@@ -10,11 +10,11 @@ body {
   background: #FFFFCC;
 }
 
-div:first-child {
+div.menu:first-child {
   margin-top: 0px;
 }
 
-div {
+div.menu {
   cursor: pointer;
   text-align: center;
   padding: 1px 3px;
@@ -24,11 +24,23 @@ div {
   margin-top: 1px;
   background: #ccccff;
 }
-div:hover {
+div.menu:hover {
   color: yellow;
   background: #4450ff;
 }
-#log-window {
+div.menu a:link, 
+div.menu a:visited, 
+div.menu a:hover { 
+ color: black; 
+ text-decoration: none; 
+} 
+div.menu:hover a:link, 
+div.menu:hover a:visited, 
+div.menu:hover a:hover { 
+ color: yellow; 
+ text-decoration: none; 
+} 
+div.logWindow {
   color: black;
   cursor: pointer;
   text-align: left;
@@ -41,10 +53,10 @@ div:hover {
   margin: 0px 0px;
   background: #FFFFCC
 }
-#log-window:hover {
+div.logWindow:hover {
   color: red;
 }
-#log-area {
+div.logArea {
   color: black;
   cursor: pointer;
   text-align: left;
@@ -60,7 +72,7 @@ div:hover {
   background: #FFFFCC
 }
 
-#ctx
+div.contextMenu
 {
   display:none;
   position:absolute;

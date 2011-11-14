@@ -5,12 +5,64 @@
 ------------------------------------------------------------ -->
 
 <HEAD>
-    <TITLE>About deFusination</TITLE>
+    <TITLE>FAQ - deFusination</TITLE>
+    <STYLE>
+    h4 {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+    </STYLE>
 </HEAD>
 
 <BODY>
-<H1>FAQ deFusinator</H1>
-</BODY>
+<H1>FAQ - deFusinator</H1>
+<UL>
 
+<LI><H4>What is deFusinator?</H4>
+deFusinator is a JavaScript de-obfuscator plugin for Chrome browser.
+</LI>
+
+<LI><H4>How is it different than other similar tools?</H4>
+deFusinator runs the script in the Chrom web browser and uses its
+DOM, therefore the script runs in a real environment including live
+data access to the internet.
+</LI>
+
+
+<LI><H4>Does it de-obfuscate everything?</H4>
+Most probably not everything, but most of current threats should be deal
+with this tool just fine (I would say 99%). 
+</LI>
+
+<LI><H4>Is it safe to visit malicious pages using this tool?</H4>
+Definitely not! de-fusinator does not prevent script from running
+nor protects the browser from exploited. You should use either
+a separated research machine to test malicious code or a
+virtual machine (VmWare or VirtualBox for example.
+</LI>
+
+<LI><H4>What if I can't see where the iframe created on the behaviour analysis?</H4>
+There can be many reasons for that. Check the iFrame report first,
+if the iFrame is there then it was created when the script run first time,
+however, it might use a flag to prevent it being created more than once.
+Also there might can be other condition that was not met during running
+the script, for example it looks for a certain type of browser.
+</LI>
+
+<LI><H4>I can't see the malicious script but my client claims that the site has been compromised.</H4>
+Some web servers are generating differnet contents depending on the
+geographical locations and client's environment such as browser type
+and operating system used. Also web site administrator might cleaned
+up their site by the time you are looking at it. 
+Ask your client to save the page to a HTML file and send it to you
+or try to use different browser and proxy servers to gather the page.
+</LI>
+
+<LI><H4>I have a question or suggestion -- can I write an e-mail to the author?</H4>
+Absolutely! Ping me on tamas.rudnai@gmail.com
+</LI>
+
+</UL>
+</BODY>
 </HTML>
 

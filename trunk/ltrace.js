@@ -12,13 +12,23 @@ var ltraceScript = function(script) {
     // execute the script
     script = stripString(script);
     try {
+        // just remove onload event if there was any
+        delete window.onload;
+        window.onload = ''; // for some reason delete does not work...
+        // execute the script
         eval_orig(script);
+        // if window.onload was created just call it, emulating the DOM functionality
+        if ( window.onload ) {
+            res += deFusLog("window.onload = \"" + window.onload + "\"");
+            window.onload();
+        }
     }
     catch(e) {
     }
 
     // need for closing off fromCharCode() printing properly!
     res += deFusLog('');
+
 }
 
 
@@ -30,7 +40,16 @@ triggerScripts = function( scripts ) {
             if ( s ) {
                 // console.log('EXEC: ' + s);
                 try {
+                    // just remove onload event if there was any
+                    delete window.onload;
+                    window.onload = ''; // for some reason delete does not work...
+                    // execute the script
                     eval_orig(s);
+                    // if window.onload was created just call it, emulating the DOM functionality
+                    if ( window.onload ) {
+                        res += deFusLog("window.onload = \"" + window.onload + "\"");
+                        window.onload();
+                    }
                 }
                 catch(e) {
                 }

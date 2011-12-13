@@ -24,6 +24,13 @@ var ltraceScript = function(script) {
         }
     }
     catch(e) {
+        var s = e.stack
+console.log("ERR1:"+s);
+        s = s.replace( /[\r\n]\s*at chrome-extension:\/\/[^\r\n]+/g, '' );
+        s = s.replace( /[\r\n]/g, '<BR>' );
+        s = s.replace( /[\t]|    /g, '&nbsp;&nbsp;&nbsp;&nbsp;' );
+console.log("ERR2:"+s);
+        res += "ERROR: " + s;
     }
 
     // need for closing off fromCharCode() printing properly!
@@ -52,6 +59,8 @@ triggerScripts = function( scripts ) {
                     }
                 }
                 catch(e) {
+                    var s = e.stack.replace( /\r/, '<BR>' );
+                    res += "ERROR: " + s;
                 }
             }
         }

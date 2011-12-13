@@ -11,6 +11,7 @@ function chr10( $1 ) {
     return fromCharCode_orig( parseInt( $1, 10 ) );
 }
 function chr16( $1 ) {
+    $1 = $1.replace( /^\\x|&#|#|%/, '' );
     return fromCharCode_orig( parseInt( $1, 16 ) );
 }
 function chrUni( $1, $2 ) {
@@ -22,15 +23,21 @@ function chrUni( $1, $2 ) {
 var decode = function(script) {
     ctx = 'decode';
 
+    // strip the script
+    script = stripString(script);
+
     for ( var s = ''; s != script; ) {
         s = script;
+        // removing text formattings to get a clear text of the script
+        script = script.replace( /%u([0-9a-fA-F]{2})([0-9a-fA-F]{2})/g, chrUni );
         if ( script.match( /[0-9a-fA-F]{16}/ ) ) {
             script = script.replace( /([0-9a-fA-F]{2})/g, chr16 );
         }
-        // removing text formattings to get a clear text of the script
-        script = script.replace( /&#(\d{1,3});/g, chr16 );
-        script = script.replace( /%u([0-9a-fA-F]{2})([0-9a-fA-F]{2})/g, chrUni );
-        script = script.replace( /(?:\\x)|(?:#)|(?:%)([0-9a-fA-F]{2})/g, chr16 );
+        script = script.replace( /\\x([0-9a-fA-F]{2})/g, chr16 );
+        script = script.replace( /&#([0-9a-fA-F]{2});/g, chr16 );
+        script = script.replace( /#([0-9a-fA-F]{2})/g, chr16 );
+        script = script.replace( /%([0-9a-fA-F]{2})/g, chr16 );
+
         script = script.replace( /(\d{1,3})[ ,;'"\)]/g, chr10 );
 
     }

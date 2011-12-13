@@ -14,6 +14,10 @@ function check(e){
     } 
 } 
 
+function clickCtx(menu) {
+    document.body.innerHTML = "CTX: " + menu.elements['a'];
+}
+
 // we need the request in a global area otherwise will loose it
 var ctxRequest;
 
@@ -36,6 +40,7 @@ function showCtxMenu(request, x, y){
             var domain = site.replace(/^www./, ''); // need to find a better way for this!!!
 
             ctxMenu.innerHTML =
+                '<div class="menu" onclick="clickCtx(this)">ACE Insight</div>'+
                 '<div class="menu"><a target="_blank" href="http://aceinsight.websense.com/Results.aspx?url='+url+'">ACE Insight</a></div>'+
                 '<div class="menu"><a target="_blank" href="http://www.mywot.com/en/scorecard/'+site+'">myWOT</a></div>'+
                 '<div class="menu"><a target="_blank" href="http://www.robtex.com/dns/'+site+'.html#result">robtex</a></div>'+

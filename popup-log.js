@@ -12,9 +12,8 @@ function logPrint(s) {
     // creating an empty context menu window
     s += '<div class="contextMenu" id="ctxMenu"></div>';
 
-    text.innerHTML = '<div class="logWindow"><div class="logArea">' + s + '</div></div>';
+    text.innerHTML = '<div class="logWindow" id="logWindow"><div class="logArea" id="logArea">' + s + '</div></div>';
     document.body.innerHTML = '';
     document.body.appendChild(text);
-    // document.body.style.backgroundColor='yellow';
 }
     
